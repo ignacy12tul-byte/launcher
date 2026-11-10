@@ -2,6 +2,8 @@
 
 ## Jeden plik do pobrania: installator1.exe
 
+**[Pobierz installator1.exe dla Windows 11 x64](https://github.com/ignacy12tul-byte/launcher/raw/refs/heads/main/installator1.exe)** — sam instalator z launcherem w środku, bez pobierania kodu projektu.
+
 `dist/installator1.exe` zawiera gotowy `Launcher.exe`. Pobierasz tylko instalator, uruchamiasz go i otrzymujesz launcher oraz skrót na pulpicie. Instalacja launchera nie wymaga GitHub Releases ani internetu. Pierwsze pobranie plików Minecraft i logowanie Microsoft nadal wymagają internetu oraz odpowiedniej Java.
 
 Kompilacja: `npm run build:win`, następnie `npm run build:standalone`. Osobny, mały `Instalator.exe` opisany poniżej to wcześniejszy wariant pobierający launcher z GitHuba.

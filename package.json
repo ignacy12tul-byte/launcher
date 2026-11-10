@@ -29,6 +29,7 @@
   },
   "build": {
     "compression": "normal",
+    "electronLanguages": ["pl", "en-US"],
     "appId": "pl.minverse.launcher",
     "productName": "minverse.pl",
     "directories": {
