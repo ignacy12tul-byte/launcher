@@ -32,7 +32,7 @@ Wynik: `dist/Launcher.exe`, `dist/Instalator.exe`, `dist/Launcher.exe.sha256`. E
 
 Przed dystrybucją opublikuj te trzy pliki w **jednym, publicznie dostępnym GitHub Release** `ignacy12tul-byte/launcher`. Bez tego instalator poprawnie przerwie pobieranie. Adres repozytorium jest zapisany w `installer/download.ps1`; przy forku zmień go przed kompilacją. Samo skopiowanie instalatora nie publikuje launchera.
 
-Workflow GitHub Actions buduje artefakty przy ręcznym uruchomieniu, a po wysłaniu taga `v1.0.0` dodatkowo tworzy wydanie. Wysyłanie kodu, taga i publikacja wymagają dostępu do repozytorium. Repozytorium nie zawiera kluczy podpisu kodu. Pliki EXE są niepodpisane; Windows może wyświetlić SmartScreen. Do publicznej dystrybucji zalecany podpis Authenticode.
+Workflow GitHub Actions buduje artefakty i publikuje je po wysłaniu taga `v1.0.0`. Można też wybrać **Actions → Windows release → Run workflow** i podać istniejący tag, domyślnie `v1.0.0`. Przy ręcznym uruchomieniu wybierz ten sam tag jako ref workflow, żeby kod odpowiadał wydaniu. Jeśli Actions są wyłączone, najpierw włącz je w ustawieniach repozytorium. Wysyłanie kodu, taga i publikacja wymagają dostępu do repozytorium. Repozytorium nie zawiera kluczy podpisu kodu. Pliki EXE są niepodpisane; Windows może wyświetlić SmartScreen. Do publicznej dystrybucji zalecany podpis Authenticode.
 
 ## Weryfikacja na Windows przed wydaniem
 
