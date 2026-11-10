@@ -43,6 +43,10 @@ Workflow GitHub Actions buduje artefakty przy ręcznym uruchomieniu, a po wysła
 
 Testy jednostkowe nie potwierdzają logowania Microsoft, działania wszystkich wersji gry ani instalacji Windows. Nie ma automatycznej aktualizacji już zainstalowanego launchera; ponowne uruchomienie instalatora pobiera ostatnie wydanie.
 
+Test interfejsu z atrapą backendu: `node test/ui-smoke.cjs` (Chromium w `/usr/bin/chromium` lub zmienna `CHROME_PATH`). Sprawdza filtrowanie wersji, formularz offline, RAM/Java, żądanie uruchomienia oraz logowanie/wylogowanie w UI. Nie łączy się z Microsoft ani nie uruchamia Minecraft. Audyt zależności runtime: `npm audit --omit=dev`. Utrzymywane zamienniki request, adm-zip i uuid są przypięte przez `overrides`.
+
+Logowanie używa dokumentowanego przepływu device-code biblioteki prismarine-auth (`live`, tytuł Minecraft Nintendo Switch). W zgodzie Microsoft może pojawić się ta nazwa. Launcher nie prosi o hasło i nie przechwytuje go; autoryzacja odbywa się w przeglądarce Microsoft.
+
 ## Sieć
 
 Runtime wymaga domen Microsoft/Xbox/Minecraft używanych przez prismarine-auth, `piston-meta.mojang.com`, `piston-data.mojang.com`, `launchermeta.mojang.com`, `launcher.mojang.com`, `libraries.minecraft.net`, `resources.download.minecraft.net` oraz hostów podanych w oficjalnych metadanych. Instalator wymaga `api.github.com`, `github.com` i domen CDN przekierowań GitHub Releases. Nie wyłączaj weryfikacji TLS ani sum kontrolnych.
