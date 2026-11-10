@@ -1,5 +1,11 @@
 # minverse.pl launcher
 
+## Jeden plik do pobrania: installator1.exe
+
+`dist/installator1.exe` zawiera gotowy `Launcher.exe`. Pobierasz tylko instalator, uruchamiasz go i otrzymujesz launcher oraz skrót na pulpicie. Instalacja launchera nie wymaga GitHub Releases ani internetu. Pierwsze pobranie plików Minecraft i logowanie Microsoft nadal wymagają internetu oraz odpowiedniej Java.
+
+Kompilacja: `npm run build:win`, następnie `npm run build:standalone`. Osobny, mały `Instalator.exe` opisany poniżej to wcześniejszy wariant pobierający launcher z GitHuba.
+
 Niezależny launcher Minecraft Java dla Windows 11 x64. Oryginalny ciemny interfejs inspirowany starszymi launcherami społecznościowymi; bez kopiowania znaków ani zasobów Feather Client.
 
 ## Funkcje

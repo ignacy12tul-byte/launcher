@@ -1,13 +1,22 @@
 Unicode true
 !include "MUI2.nsh"
 Name "minverse.pl"
+!ifdef EMBEDDED
+OutFile "../dist/installator1.exe"
+SetCompress off
+!else
 OutFile "../dist/Instalator.exe"
+!endif
 InstallDir "$LOCALAPPDATA\Programs\minverse.pl"
 RequestExecutionLevel user
 ShowInstDetails show
 !define MUI_ABORTWARNING
 !define MUI_WELCOMEPAGE_TITLE "Witaj w minverse.pl"
+!ifdef EMBEDDED
+!define MUI_WELCOMEPAGE_TEXT "Launcher.exe jest juz w tym instalatorze. Zostanie zainstalowany na komputerze i otrzyma skrot na pulpicie. Pobieranie Minecraft i logowanie Microsoft wymagaja internetu. Gra wymaga odpowiedniej wersji Java 64-bit."
+!else
 !define MUI_WELCOMEPAGE_TEXT "Instalator pobierze aktualny Launcher.exe z oficjalnych wydan GitHub i sprawdzi SHA256. Wymagane polaczenie z internetem. Minecraft wymaga odpowiedniej wersji Java 64-bit."
+!endif
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
@@ -17,6 +26,15 @@ ShowInstDetails show
 !insertmacro MUI_UNPAGE_INSTFILES
 !insertmacro MUI_LANGUAGE "Polish"
 Section "Launcher"
+!ifdef EMBEDDED
+  SetOutPath "$INSTDIR"
+  ClearErrors
+  File /oname=Launcher.exe "../dist/Launcher.exe"
+  IfErrors 0 success
+  MessageBox MB_ICONSTOP "Nie udalo sie zapisac Launcher.exe. Zamknij launcher i sprawdz uprawnienia do folderu instalacji."
+  SetErrorLevel 1
+  Abort
+!else
   InitPluginsDir
   SetOutPath "$PLUGINSDIR"
   File "download.ps1"
@@ -29,6 +47,7 @@ Section "Launcher"
   MessageBox MB_ICONSTOP "Nie udalo sie pobrac launchera. Sprawdz internet, dostepnosc wydania GitHub oraz czy launcher jest zamkniety.$\r$\n$1"
   SetErrorLevel 1
   Abort
+!endif
 success:
   SetOutPath "$INSTDIR"
   WriteUninstaller "$INSTDIR\Odinstaluj.exe"

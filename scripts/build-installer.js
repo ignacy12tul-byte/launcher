@@ -21,7 +21,8 @@ for (const command of candidates.filter(Boolean)) {
   const check = spawnSync(command, ['-VERSION'], { encoding: 'utf8', env });
   if (check.status !== 0) continue;
   fs.mkdirSync(path.join(__dirname, '../dist'), { recursive: true });
-  const result = spawnSync(command, ['installer.nsi'], { cwd: path.join(__dirname, '../installer'), stdio: 'inherit', env });
+  const args = process.argv.includes('--embedded') ? ['-DEMBEDDED', 'installer.nsi'] : ['installer.nsi'];
+  const result = spawnSync(command, args, { cwd: path.join(__dirname, '../installer'), stdio: 'inherit', env });
   process.exit(result.status ?? 1);
 }
 console.error('Nie znaleziono NSIS. Najpierw npm run build:win lub zainstaluj NSIS 3.');

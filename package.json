@@ -10,6 +10,7 @@
     "test": "node --test test/*.test.js",
     "build:win": "electron-builder --win portable --x64",
     "build:installer": "node scripts/build-installer.js",
+    "build:standalone": "node scripts/build-installer.js --embedded",
     "release:hash": "node scripts/hash.js"
   },
   "dependencies": {

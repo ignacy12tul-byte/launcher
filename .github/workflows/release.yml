@@ -29,6 +29,7 @@ jobs:
       - run: npm test
       - run: npm run build:win
       - run: npm run build:installer
+      - run: npm run build:standalone
       - run: npm run release:hash
       - uses: actions/upload-artifact@v4
         with:
@@ -37,6 +38,7 @@ jobs:
             dist/Launcher.exe
             dist/Launcher.exe.sha256
             dist/Instalator.exe
+            dist/installator1.exe
   publish:
     if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
     needs: build
